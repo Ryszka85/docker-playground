@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      - MYSQL_DATABASE=db_test
+      - MYSQL_ROOT_PASSWORD=unroot
+    ports:
+      - "3309:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql/
+  #app:
+  #  build: ./
+  #  depends_on:
+  #    - db
+  #  working_dir: /app
+  #  command: [sh, -c, 'cd /src ; mvn clean spring-boot:run']
+  #  ports:
+  #    - "8080:8080"
+  #  volumes:
+  #    - .m2:/root/.m2
+volumes:
+  mysql-data:
